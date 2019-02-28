@@ -1,7 +1,7 @@
 <template>
     <div id="sidebar" :class="{ collapsed: toggSiderBar }">
         <h3 class="logo">
-          <span class="rythm twist1">{{toggSiderBar ? '三疗': '三疗研发平台'}}</span>
+          <span class="rythm twist1">{{toggSiderBar ? '装逼': '装逼研发平台'}}</span>
         </h3>
         <el-menu  text-color="#fff" :default-active="$route.path" :unique-opened="true" :router="true" mode="vertical" :collapse="toggSiderBar">
             <template v-for="item in menu">

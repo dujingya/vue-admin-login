@@ -4,7 +4,7 @@
        <div class="base-box">
          <img src="../../../static/img/line_left.png">
          <div>
-           <p class="title">三疗研发平台</p>
+           <p class="title">装逼研发平台</p>
            <p class="mark">San Liao research and development platform</p>
          </div>
          <img src="../../../static/img/line_right.png">

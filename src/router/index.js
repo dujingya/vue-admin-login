@@ -29,7 +29,7 @@ const router = new Router({
             name: "Signin",
             meta: {
                 requireAuth: false,
-                title: "三疗开发平台"
+                title: "装逼开发平台"
             },
             component: Signin
         },
