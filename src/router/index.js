@@ -6,15 +6,17 @@ const Signin = resolve => require(["@/views/Signin"], resolve);
 // 非登录页的包裹组件
 const Layout = resolve => require(["@/views/Layout"], resolve);
 // 项目信息
-const ProjectInfo = resolve => require(["@/views/ProjectInfo"], resolve);
+const SaleList = resolve => require(["@/views/saleList"], resolve);
 // 关于作者
-const About = resolve => require(["@/views/About"], resolve);
+const Add = resolve => require(["@/views/add"], resolve);
+// 词条指标
+const Dictionary = resolve => require(["@/views/Dictionary"], resolve);
 // 天气预报
-const Weather = resolve => require(["@/views/Weather"], resolve);
+const Batch = resolve => require(["@/views/batch"], resolve);
 // 立方体
-const Cube = resolve => require(["@/views/Cube"], resolve);
+const Classify = resolve => require(["@/views/classify"], resolve);
 // 权限测试
-const AuthorityTest = resolve => require(["@/views/AuthorityTest"], resolve);
+const Compile = resolve => require(["@/views/compile"], resolve);
 // 404
 const Notfound = resolve => require(["@/views/Notfound"], resolve);
 
@@ -38,48 +40,56 @@ const router = new Router({
                 requireAuth: true
             },
             component: Layout,
-            redirect: '/cube', // 重定向到第一个子路由，否则只渲染Layout组件，这块儿使用时解除注释
+            // redirect: '/cube', // 重定向到第一个子路由，否则只渲染Layout组件，这块儿使用时解除注释
             // redirect: "/signin", // 这里重定向到登录页面，是为了展示使用，实际用这个项目开发时，需要注释这行，解除上一行的注释
             children: [
                 {
-                    path: "notes",
-                    meta: {
-                        requireAuth: true,
-                        title: "销售可见"
-                    },
-                    component: ProjectInfo
-                },
-                {
-                    path: "about",
-                    meta: {
-                        requireAuth: true,
-                        title: "添加"
-                    },
-                    component: About
-                },
-                {
-                    path: "weather",
-                    meta: {
-                        requireAuth: true,
-                        title: "批量处理"
-                    },
-                    component: Weather
-                },
-                {
-                    path: "cube",
+                    path: "classify",
                     meta: {
                         requireAuth: true,
                         title: "分类页"
                     },
-                    component: Cube
+                    component: Classify
                 },
                 {
-                    path: "authority",
+                  path: "saleList",
+                  meta: {
+                    requireAuth: true,
+                    title: "销售可见"
+                  },
+                  component: SaleList
+                },
+                {
+                  path: "add",
+                  meta: {
+                    requireAuth: true,
+                    title: "添加"
+                  },
+                  component: Add
+                },
+                {
+                  path: "dictionary",
+                  meta: {
+                    requireAuth: true,
+                    title: "健康词条-指标"
+                  },
+                  component: Dictionary
+                },
+                {
+                  path: "batch",
+                  meta: {
+                    requireAuth: true,
+                    title: "批量处理"
+                  },
+                  component: Batch
+                },
+                {
+                    path: "compile",
                     meta: {
                         requireAuth: true,
                         title: "编辑"
                     },
-                    component: AuthorityTest
+                    component: Compile
                 }
           ]
         },
@@ -100,10 +110,14 @@ router.beforeEach((to, from, next) => {
   // 自动化修改页面标签的 title
     document.title = to.meta.title;
   // 如果已经登录，并且要去登录页，就不让TA去登录页，重定向到首页
-    if (to.path === "/signin" && localStorage.token) {
-        next("/notes");
+  //   console.log(to.path, 3333)
+  //   if (to.path === "/signin" && localStorage.token) {
+  //       next("/classify");
+  //   } else
+    if (to.path === "/") {
+        next("/signin");
     } else {
-        next();
+        next()
     }
 });
 

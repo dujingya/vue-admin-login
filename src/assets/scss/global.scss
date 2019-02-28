@@ -11,6 +11,10 @@ body {
     height: 100%;
   }
 }
+h1,h2,h3,h4,h5,h6,p,ul,li{
+  margin: 0;
+  padding: 0;
+}
 // 左侧导航图表垂直方向对齐
 // 宽度还得自己设定，坑死
 .el-menu {
@@ -35,12 +39,12 @@ body {
   color: #ff4949;
   margin-right: 4px;
 }
-#sidebar-wrap ul ul li {
-  background: rgba(40, 52, 70, 1) !important;
-  &:hover {
-    background: #48576a !important;
-  }
-}
+//#sidebar-wrap ul ul li {
+//  background: rgba(40, 52, 70, 1) !important;
+//  &:hover {
+//    background: #48576a !important;
+//  }
+//}
 
 .el-menu .el-submenu__title i {
   color: #fff;

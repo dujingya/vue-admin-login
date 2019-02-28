@@ -1,5 +1,5 @@
 <template>
-  <div class="charts">
+  <div class="app-container">
     <el-row class="sel-row">
       <el-col :span="2" class="sel-label">选择城市：</el-col>
       <el-col :span="3">
@@ -9,35 +9,7 @@
         </el-select>
       </el-col>
     </el-row>
-    <el-row :gutter="20">
-      <el-col :span="4">
-        <el-card class="box-card">
-          {{'实时温度：' + (cityData.wendu || 'XX') + '℃'}}
-        </el-card>
-      </el-col>
-      <el-col :span="4">
-        <el-card class="box-card">
-          {{'空气质量：' + ( cityData.aqi || '暂无' )}}
-        </el-card>
-      </el-col>
-      <el-col :span="16">
-        <el-card class="box-card">
-          {{cityData.ganmao || '暂无提示'}}
-        </el-card>
-      </el-col>
-    </el-row>
-    <div class="chart-wrap" v-loading="loading">
-      <el-row>
-        <el-col :span="24">
-          <el-card class="box-card">
-            <div class="animated fadeIn">
-              <!-- 这里是折线图组件 -->
-              <line-chart :lineData="lineData"></line-chart>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
-    </div>
+    <div class="gredient"></div>
   </div>
 </template>
 <script>
@@ -50,7 +22,7 @@ import lineChart from "comp/charts/Line";
 import jsonp from "jsonp";
 
 export default {
-  name: "weather",
+  name: "batch",
   components: {
     "line-chart": lineChart
   },
@@ -100,28 +72,37 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss">
-.sel-row {
-  margin-bottom: 20px;
-  .sel-label {
-    line-height: 36px;
+<style scoped lang="scss" scoped>
+.app-container {
+  background: #fff;
+  padding: 20px 20px 40px;
+  color: #909399 !important;
+  .sel-row {
+    margin-bottom: 20px;
+    .sel-label {
+      line-height: 36px;
+    }
   }
-}
 
-.chart-wrap {
-  margin-top: 20px;
-}
+  .chart-wrap {
+    margin-top: 20px;
+  }
 
-.el-card__header {
-  padding: 10px 20px !important;
-}
+  .el-card__header {
+    padding: 10px 20px !important;
+  }
 
-.ct {
-  float: right;
-  line-height: 21px;
-  &:hover {
-    color: #20a0ff;
-    cursor: pointer;
+  .ct {
+    float: right;
+    line-height: 21px;
+    &:hover {
+      color: #20a0ff;
+      cursor: pointer;
+    }
+  }
+  .gredient{
+    width: 100px;
+    height: 600px;
   }
 }
 </style>

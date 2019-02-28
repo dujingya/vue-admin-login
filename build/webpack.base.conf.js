@@ -22,13 +22,8 @@ module.exports = {
         alias: {
             vue$: 'vue/dist/vue.js',
             '@': resolve('src'),
-            bus: resolve('src/bus'),
             comp: resolve('src/components'),
-            mock: resolve('src/mock'),
-            directives: resolve('src/directives'),
-            filters: resolve('src/filters'),
-            mixins: resolve('src/mixins'),
-            pages: resolve('src/pages')
+            pages: resolve('src/views')
         }
     },
     module: {
@@ -42,8 +37,7 @@ module.exports = {
                 loader: 'babel-loader',
                 include: [
                     resolve('src'),
-                    resolve('test'),
-                    resolve('node_modules/vue-particles')
+                    resolve('test')
                 ]
             },
             {

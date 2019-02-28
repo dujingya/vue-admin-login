@@ -21,25 +21,6 @@
                 </el-form-item>
             </el-form>
         </div>
-        <!-- 粒子漂浮物 -->
-        <vue-particles
-            color="#fff"
-            :particleOpacity="0.7"
-            :particlesNumber="30"
-            shapeType="star"
-            :particleSize="5"
-            linesColor="#fff"
-            :linesWidth="2"
-            :lineLinked="true"
-            :lineOpacity="0.4"
-            :linesDistance="150"
-            :moveSpeed="3"
-            :hoverEffect="true"
-            hoverMode="grab"
-            :clickEffect="true"
-            clickMode="push"
-        >
-        </vue-particles>
     </div>
 </template>
 <script>
@@ -124,7 +105,7 @@ export default {
         method: "GET"
       }).then(res => {
         // 提取菜单数组，交给本地存储
-        this.$router.push("notes");
+        this.$router.push("saleList");
       });
     },
     openMsg() {

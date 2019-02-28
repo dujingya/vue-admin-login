@@ -6,7 +6,6 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import store from './store'
-import VueParticles from 'vue-particles'
 import * as utils from '@/utils'
 import 'font-awesome/scss/font-awesome.scss'
 // 在入口处引入模拟的假数据
@@ -16,8 +15,6 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/scss/element-variables.scss'
 Vue.use(ElementUI);
-// 使用登录页粒子效果插件
-Vue.use(VueParticles)
 // 将axios绑定到vue原型上
 Vue.prototype.$axios = axios
 // Vue 的全局配置

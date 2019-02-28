@@ -10,7 +10,7 @@
 </template>
 <script>
 export default {
-  name: "cube",
+  name: "classify",
   data() {
     return {};
   },

@@ -1,11 +1,11 @@
 <template>
-    <div id="sidebar-wrap" :class="{ collapsed: toggSiderBar }">
+    <div id="sidebar" :class="{ collapsed: toggSiderBar }">
         <h3 class="logo">
-          <span class="rythm twist1">{{toggSiderBar ? 'VUE': 'AUTO VUE'}}</span>
+          <span class="rythm twist1">{{toggSiderBar ? '三疗': '三疗研发平台'}}</span>
         </h3>
-        <el-menu background-color="#3f4d67" text-color="#fff" :default-active="$route.path" :unique-opened="true" :router="true" mode="vertical" :collapse="toggSiderBar">
+        <el-menu  text-color="#fff" :default-active="$route.path" :unique-opened="true" :router="true" mode="vertical" :collapse="toggSiderBar">
             <template v-for="item in menu">
-                <el-submenu v-if="item.children.length !== 0" :index="item.router" :key="item.router">
+                <el-submenu class="child-item" v-if="item.children.length !== 0" :index="item.router" :key="item.router">
                     <template slot="title">
                         <i :class="item.icon"></i>
                         <span slot="title">{{item.name}}</span>
@@ -22,9 +22,9 @@
                 </el-menu-item>
             </template>
         </el-menu>
-        <div class="animated bounceInDown imgWrap">
-            <img src="../../static/img/little.gif" height="60px" class="gif rythm pulse3">
-        </div>
+        <!--<div class="animated bounceInDown imgWrap">-->
+            <!--<img src="../../static/img/little.gif" height="60px" class="gif rythm pulse3">-->
+        <!--</div>-->
     </div>
 </template>
 <script>
@@ -39,42 +39,48 @@ export default {
       menu: [
         {
           name: "分类页",
-          name_en: "Cube",
-          router: "/cube",
+          router: "/classify",
           icon: "el-icon-menu",
           children: []
         },
         {
-          name: "商品目录",
-          name_en: "Projects",
+          name: "健康词条-病症",
           router: "/",
           icon: "el-icon-menu",
           children: [
             {
+              name: "健康词条-指标",
+              router: "/dictionary",
+              icon: "el-icon-menu"
+            }
+          ]
+        },
+        {
+          name: "商品目录",
+          router: "/saleList",
+          icon: "el-icon-menu",
+          children: [
+            {
               name: "销售可见",
-              name_en: "Notes",
-              router: "/notes",
-              icon: "el-icon-date"
+              router: "/saleList",
+              icon: "el-icon-menu"
             },
             {
               name: "添加",
-              name_en: "About",
-              router: "/about",
-              icon: "el-icon-document"
+              router: "/add",
+              icon: "el-icon-menu"
             },
             {
               name: "编辑",
-              name_en: "Authority",
-              router: "/authority",
-              icon: "el-icon-setting"
+              router: "/compile",
+              icon: "el-icon-menu"
             }
           ]
         },
         {
           name: "批量处理",
-          name_en: "Weather",
-          router: "/weather",
-          icon: "el-icon-picture-outline",
+          router: "/batch",
+          icon: "el-icon-menu",
           children: []
         }
       ]
@@ -99,9 +105,9 @@ export default {
   }
 };
 </script>
-<style scoped lang="scss">
-#sidebar-wrap {
-  width: 160px;
+<style  lang="scss">
+#sidebar {
+  width: 200px;
   height: 100%;
   position: fixed;
   left: 0;
@@ -109,12 +115,36 @@ export default {
   bottom: 0;
   z-index: 5;
   transition: all .5s;
-  background: #3f4d67;
+  /*background: #3f4d67;*/
+  background-image: -webkit-linear-gradient(top, #27294E, #B7445D);
   &.collapsed {
     width: 64px;
     transition: all 0.5s;
   }
+  .el-menu{
+    background: transparent;
+  }
+  .el-menu-item:hover{
+    background: #382E4E;
+  }
+  .el-menu-item:focus, .el-menu-item:hover {
+    outline: 0;
+    background-color: #382E4E;
+  }
+  .child-item li:hover{
+    background: #382E4E;
+  }
+  .child-item li{
+    background: rgba(56,46,78,.5);
+  }
+  .el-menu-item.is-active{
+    background: #382E4E;
+    color: #fff;
+  }
 
+  .el-submenu__title:hover{
+    background: #382E4E;
+  }
   /* 图标动画 */
   .imgWrap {
     text-align: center;
@@ -147,8 +177,8 @@ export default {
 // 美化左侧导航的留白
 .el-submenu .el-menu-item {
   padding: 0 20px;
-  min-width: 160px;
-  padding-left: 53px !important;
+  min-width: 200px;
+  padding-left: 40px !important;
 }
 
 // 改变元素属性，要不动画效果不管用，是不是很厉害啊？哈哈哈
