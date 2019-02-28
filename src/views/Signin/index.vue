@@ -105,7 +105,7 @@ export default {
         method: "GET"
       }).then(res => {
         // 提取菜单数组，交给本地存储
-        this.$router.push("saleList");
+        this.$router.push("Dashboard");
       });
     },
     openMsg() {

@@ -39,7 +39,7 @@ export default {
       menu: [
         {
           name: "分类页",
-          router: "/classify",
+          router: "/Classify",
           icon: "el-icon-menu",
           children: []
         },
@@ -57,29 +57,29 @@ export default {
         },
         {
           name: "商品目录",
-          router: "/saleList",
+          router: "/SaleList",
           icon: "el-icon-menu",
           children: [
             {
               name: "销售可见",
-              router: "/saleList",
+              router: "/SaleList",
               icon: "el-icon-menu"
             },
             {
               name: "添加",
-              router: "/add",
+              router: "/Add",
               icon: "el-icon-menu"
             },
             {
               name: "编辑",
-              router: "/compile",
+              router: "/Compile",
               icon: "el-icon-menu"
             }
           ]
         },
         {
           name: "批量处理",
-          router: "/batch",
+          router: "/Batch",
           icon: "el-icon-menu",
           children: []
         }

@@ -1,6 +1,6 @@
 <template>
     <div class="app-container">
-       <!--<classify></classify>-->
+       <!--<Classify></Classify>-->
        <div class="base-box">
          <img src="../../../static/img/line_left.png">
          <div>
@@ -17,7 +17,7 @@
     </div>
 </template>
 <script>
-// import classify from 'comp/classify'
+// import Classify from 'comp/Classify'
 export default {
   name: "cube",
 };

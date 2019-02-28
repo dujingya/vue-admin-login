@@ -3,20 +3,22 @@ import Router from "vue-router";
 
 // 登录
 const Signin = resolve => require(["@/views/Signin"], resolve);
+// 首页
+const Dashboard = resolve => require(["@/views/Dashboard"], resolve);
 // 非登录页的包裹组件
 const Layout = resolve => require(["@/views/Layout"], resolve);
 // 项目信息
-const SaleList = resolve => require(["@/views/saleList"], resolve);
+const SaleList = resolve => require(["@/views/SaleList"], resolve);
 // 关于作者
-const Add = resolve => require(["@/views/add"], resolve);
+const Add = resolve => require(["@/views/Add"], resolve);
 // 词条指标
 const Dictionary = resolve => require(["@/views/Dictionary"], resolve);
 // 天气预报
-const Batch = resolve => require(["@/views/batch"], resolve);
+const Batch = resolve => require(["@/views/Batch"], resolve);
 // 立方体
-const Classify = resolve => require(["@/views/classify"], resolve);
+const Classify = resolve => require(["@/views/Classify"], resolve);
 // 权限测试
-const Compile = resolve => require(["@/views/compile"], resolve);
+const Compile = resolve => require(["@/views/Compile"], resolve);
 // 404
 const Notfound = resolve => require(["@/views/Notfound"], resolve);
 
@@ -32,6 +34,15 @@ const router = new Router({
                 title: "装逼开发平台"
             },
             component: Signin
+        },
+        {
+          path: "/dashboard",
+          name: "Dashboard",
+          meta: {
+            requireAuth: false,
+            title: "装逼开发平台"
+          },
+          component: Signin
         },
         // 然后就是嵌套路由了，也就是登陆后的各个页面
         {
@@ -52,7 +63,7 @@ const router = new Router({
                     component: Classify
                 },
                 {
-                  path: "saleList",
+                  path: "SaleList",
                   meta: {
                     requireAuth: true,
                     title: "销售可见"
@@ -112,7 +123,7 @@ router.beforeEach((to, from, next) => {
   // 如果已经登录，并且要去登录页，就不让TA去登录页，重定向到首页
   //   console.log(to.path, 3333)
   //   if (to.path === "/signin" && localStorage.token) {
-  //       next("/classify");
+  //       next("/Classify");
   //   } else
     if (to.path === "/") {
         next("/signin");
