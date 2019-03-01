@@ -1,126 +1,84 @@
 <template>
-    <div class="app-container">
-      <h3>体检评估--添加</h3>
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="app-form">
-        <el-form-item label="活动名称" prop="name">
-          <el-input v-model="ruleForm.name" class="active-name"></el-input>
-        </el-form-item>
-        <el-form-item label="活动区域" prop="region">
-          <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="活动时间" required>
-          <el-col :span="11">
-            <el-form-item prop="date1">
-              <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-            </el-form-item>
-          </el-col>
-          <el-col class="line" :span="2">-</el-col>
-          <el-col :span="11">
-            <el-form-item prop="date2">
-              <el-time-picker type="fixed-time" placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-            </el-form-item>
-          </el-col>
-        </el-form-item>
-        <el-form-item label="即时配送" prop="delivery">
-          <el-switch v-model="ruleForm.delivery"></el-switch>
-        </el-form-item>
-        <el-form-item label="活动性质" prop="type">
-          <el-checkbox-group v-model="ruleForm.type">
-            <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-            <el-checkbox label="地推活动" name="type"></el-checkbox>
-            <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-            <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
-          </el-checkbox-group>
-        </el-form-item>
-        <el-form-item label="特殊资源" prop="resource">
-          <el-radio-group v-model="ruleForm.resource">
-            <el-radio label="线上品牌商赞助"></el-radio>
-            <el-radio label="线下场地免费"></el-radio>
-          </el-radio-group>
-        </el-form-item>
-        <el-form-item label="活动形式" prop="desc">
-          <el-input type="textarea" v-model="ruleForm.desc"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-          <el-button @click="resetForm('ruleForm')">重置</el-button>
-        </el-form-item>
-      </el-form>
+  <div class="app-container">
+    <div class="base-box">
+      <img src="../../../static/img/line_left.png">
+      <div>
+        <p class="title">足疗研发平台</p>
+        <p class="mark">San Liao research and development platform</p>
+      </div>
+      <img src="../../../static/img/line_right.png">
     </div>
+    <div class="box-item">
+      <div class="item" @click="toMenu"></div>
+      <div class="item" @click="toDisease"></div>
+      <div class="item"></div>
+    </div>
+  </div>
 </template>
 <script>
-export default {
-  name: 'add',
-  components: {
-  },
-  data() {
-    return {
-      ruleForm: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
-      rules: {
-        name: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
-        ],
-        region: [
-          { required: true, message: '请选择活动区域', trigger: 'change' }
-        ],
-        date1: [
-          { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
-        ],
-        date2: [
-          { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
-        ],
-        type: [
-          { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
-        ],
-        resource: [
-          { required: true, message: '请选择活动资源', trigger: 'change' }
-        ],
-        desc: [
-          { required: true, message: '请填写活动形式', trigger: 'blur' }
-        ]
+  export default {
+    name: "classify",
+    data() {
+      return {
+        name: ''
       }
-    };
-  },
-  methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
     },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
+    methods: {
+      toMenu() {
+        this.$router.push('Dictionary')
+      },
+      toDisease() {
+        this.$router.push('SaleList')
+      }
     }
-  }
-};
+  };
 </script>
-<style  lang="scss" scoped>
+<style lang="scss" scoped>
   .app-container{
-    text-align:center;
-    padding:10px 100px 40px !important;
+    background: #fff;
+    padding: 0;
+    height: 100%;
+    width: 100%;
     color: #909399 !important;
-    h3{
-      padding: 30px;
+    .base-box{
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      height: 270px;
+      -ms-flex-pack: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(90deg,#bca7ff,#709ffa);
+      color: #fff;
+      div{
+        padding: 0 25px;
+      }
+      .title{
+        font-size: 40px;
+        height: 45px;
+        line-height: 45px;
+        margin: 0;
+        padding-bottom: 15px;
+        font-family: Georgia,serif;
+      }
+      .mark{
+        height: 12px;
+        line-height: 12px;
+        font-size: 11.5px;
+      }
     }
-    .app-form{
-      width: 60%;
+    .box-item{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      .item{
+        width: 240px;
+        height: 280px;
+        margin: 40px;
+        background: #fd4346;
+      }
     }
   }
 </style>

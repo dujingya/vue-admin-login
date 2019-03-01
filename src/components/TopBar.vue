@@ -5,7 +5,7 @@
         <el-row type="flex" justify="space-between">
             <el-col :span="5">
                 <i :class="[isCollapse ? 'icon-spread': 'icon-recovery','iconfont']" @click="toggleSiderBar"></i>
-                <a style="font-size: 24px;margin-left: 10px;">装逼研发平台</a>
+                <a style="font-size: 24px;margin-left: 10px;">足疗研发平台</a>
             </el-col>
             <el-col :span="12">
                 <el-row type="flex" class="row-right" justify="end" style="margin-right:-15px">

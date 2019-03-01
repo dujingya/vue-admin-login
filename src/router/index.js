@@ -15,8 +15,6 @@ const Add = resolve => require(["@/views/Add"], resolve);
 const Dictionary = resolve => require(["@/views/Dictionary"], resolve);
 // 天气预报
 const Batch = resolve => require(["@/views/Batch"], resolve);
-// 立方体
-const Classify = resolve => require(["@/views/Classify"], resolve);
 // 权限测试
 const Compile = resolve => require(["@/views/Compile"], resolve);
 // 404
@@ -31,7 +29,7 @@ const router = new Router({
             name: "Signin",
             meta: {
                 requireAuth: false,
-                title: "装逼开发平台"
+                title: "足疗开发平台"
             },
             component: Signin
         },
@@ -40,9 +38,9 @@ const router = new Router({
           name: "Dashboard",
           meta: {
             requireAuth: false,
-            title: "装逼开发平台"
+            title: "足疗开发平台"
           },
-          component: Signin
+          component: Dashboard
         },
         // 然后就是嵌套路由了，也就是登陆后的各个页面
         {
@@ -55,26 +53,19 @@ const router = new Router({
             // redirect: "/signin", // 这里重定向到登录页面，是为了展示使用，实际用这个项目开发时，需要注释这行，解除上一行的注释
             children: [
                 {
-                    path: "classify",
-                    meta: {
-                        requireAuth: true,
-                        title: "分类页"
-                    },
-                    component: Classify
-                },
-                {
                   path: "SaleList",
                   meta: {
                     requireAuth: true,
-                    title: "销售可见"
+                    title: "商品名称"
                   },
                   component: SaleList
                 },
                 {
                   path: "add",
+                  hidden: true,
                   meta: {
                     requireAuth: true,
-                    title: "添加"
+                    title: "按摩"
                   },
                   component: Add
                 },
@@ -82,7 +73,7 @@ const router = new Router({
                   path: "dictionary",
                   meta: {
                     requireAuth: true,
-                    title: "健康词条-指标"
+                    title: "指标"
                   },
                   component: Dictionary
                 },
@@ -90,13 +81,14 @@ const router = new Router({
                   path: "batch",
                   meta: {
                     requireAuth: true,
-                    title: "批量处理"
+                    title: "商品价格"
                   },
                   component: Batch
                 },
                 {
-                    path: "compile",
-                    meta: {
+                  path: "compile",
+                  hidden: true,
+                  meta: {
                         requireAuth: true,
                         title: "编辑"
                     },
@@ -123,7 +115,7 @@ router.beforeEach((to, from, next) => {
   // 如果已经登录，并且要去登录页，就不让TA去登录页，重定向到首页
   //   console.log(to.path, 3333)
   //   if (to.path === "/signin" && localStorage.token) {
-  //       next("/Classify");
+  //       next("/Dashboard");
   //   } else
     if (to.path === "/") {
         next("/signin");

@@ -1,68 +1,28 @@
 <template>
     <div class="app-container">
       <div class="searchBox">
-        <span style="height: 40px;margin-left: 20px; line-height: 40px; font-size: 20px; color: #909399;">类别:</span>
-        <el-select v-model="gender" class="selectGender" clearable placeholder="类别">
-          <el-option
-            v-for="item in genderOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
         <el-input placeholder="名字/电话/编号/标注结果" class="searchInputss" v-model="query">
           <i slot="prefix" class="el-input__icon el-icon-search"></i>
         </el-input>
         <el-button type="primary" class="searchBtn" @click="search">搜索</el-button>
       </div>
-      <el-table :data="tableData" border style="width: 100%">
-        <el-table-column prop="date" label="日期" width="180"></el-table-column>
-        <el-table-column prop="name" label="姓名" width="180"></el-table-column>
-        <el-table-column prop="address" label="地址"></el-table-column>
-      </el-table>
     </div>
 </template>
 <script>
 export default {
     name: 'Dictionary',
-    components: {
-    },
     data(){
       return {
         gender: '',
-        query: '',
-        currentPage: 1,
-        pageSizeNum: 10,
-        genderOptions: [{
-          value: '0',
-          label: '中医'
-        }, {
-          value: '1',
-          label: '西医'
-        }],
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }]
+        query: ''
       }
     },
     methods: {
       search() {  // 搜索按钮
-        this.currentPage = 1
-        this.pageSizeNum = 10
+        this.result = false
+      },
+      cancer() {
+        this.result = true
       }
     }
 };
@@ -75,6 +35,7 @@ export default {
       width: 100%;
       display: flex;
       flex-direction: row;
+      justify-content: center;
       box-sizing: border-box;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -82,25 +43,12 @@ export default {
       padding: 20px 0;
       margin-bottom: 20px;
       .searchInputss{
-        width: 240px;
+        width: 360px;
         margin-left: 10px;
       }
       .searchInput {
         height: 40px;
         line-height: 40px;
-      }
-      .selectGender,.selectLabel,.selectDate{
-        width: 90px;
-        margin-left: 10px;
-      }
-      .selectLabel{
-        width: 110px;
-      }
-      .selectDate{
-        width: 250px;
-      }
-      .el-date-editor .el-range-separator{
-        width: 10%;
       }
       .searchBtn {
         width: 80px;
@@ -111,6 +59,85 @@ export default {
         border: none;
         outline: none;
         margin-left: 20px;
+      }
+    }
+    .list{
+      .classify{
+        padding: 0 50px;
+        .first-item{
+          display: block;
+          margin: 10px;
+          overflow: hidden;
+          .left{
+            float: left;
+            width: 10%;
+            padding: 5px 0 5px 10px;
+            font-size: 14px;
+            text-align: right;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -o-box-sizing: border-box;
+          }
+          .right{
+            float: right;
+            width: 90%;
+            overflow: hidden;
+            li{
+              float: left;
+              padding: 5px 10px;
+              font-size: 14px;
+              cursor: pointer;
+            }
+            li:hover{
+              background: blue;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+    .result{
+      padding: 5px 50px;
+      background: #f9f9f9;
+      .resultNum{
+        margin: 10px 0;
+        span{
+          float: right;
+          background: #4cd9cb;
+          padding: 2px 10px;
+          font-size: 12px;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+      ul{
+        li{
+          position: relative;
+          overflow: hidden;
+          border-bottom: 2px dashed #DADADA;
+          .title{
+            margin: 10px 0;
+            font-size: 16px;
+            color: #fd4346;
+          }
+          .content{
+            height: 40px;
+            line-height: 20px;
+            overflow: hidden;
+            margin: 10px 0 16px;
+            color: #353d47;
+            font-size: 14px;
+          }
+          .detail{
+            position: absolute;
+            bottom: 2px;
+            right: 5px;
+            height: 15px;
+            font-size: 12px;
+            cursor: pointer;
+          }
+        }
       }
     }
   }

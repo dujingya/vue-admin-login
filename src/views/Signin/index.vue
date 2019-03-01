@@ -2,7 +2,7 @@
     <div class="bg">
         <div class="login-wrap animated flipInY">
             <h3>Auto Vue</h3>
-            <h3>欢迎使用装逼开发平台</h3>
+            <h3>欢迎使用足疗开发平台</h3>
             <el-form ref="form" :model="form" :rules="rules" label-width="0px">
                 <el-form-item prop="name">
                     <el-input placeholder="用户名" v-model="form.name"></el-input>

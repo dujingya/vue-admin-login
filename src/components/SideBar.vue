@@ -1,7 +1,7 @@
 <template>
     <div id="sidebar" :class="{ collapsed: toggSiderBar }">
         <h3 class="logo">
-          <span class="rythm twist1">{{toggSiderBar ? '装逼': '装逼研发平台'}}</span>
+          <span class="rythm twist1">{{toggSiderBar ? '足疗': '足疗研发平台'}}</span>
         </h3>
         <el-menu  text-color="#fff" :default-active="$route.path" :unique-opened="true" :router="true" mode="vertical" :collapse="toggSiderBar">
             <template v-for="item in menu">
@@ -38,18 +38,12 @@ export default {
       isMusicOn: false,
       menu: [
         {
-          name: "分类页",
-          router: "/Classify",
-          icon: "el-icon-menu",
-          children: []
-        },
-        {
-          name: "健康词条-病症",
+          name: "健康",
           router: "/",
           icon: "el-icon-menu",
           children: [
             {
-              name: "健康词条-指标",
+              name: "指标",
               router: "/dictionary",
               icon: "el-icon-menu"
             }
@@ -61,24 +55,14 @@ export default {
           icon: "el-icon-menu",
           children: [
             {
-              name: "销售可见",
+              name: "商品名称",
               router: "/SaleList",
-              icon: "el-icon-menu"
-            },
-            {
-              name: "添加",
-              router: "/Add",
-              icon: "el-icon-menu"
-            },
-            {
-              name: "编辑",
-              router: "/Compile",
               icon: "el-icon-menu"
             }
           ]
         },
         {
-          name: "批量处理",
+          name: "商品价格",
           router: "/Batch",
           icon: "el-icon-menu",
           children: []
